@@ -1,38 +1,29 @@
 {
-    "name": "hackathon"
-    , "version": "1.0.0"
-    , "description": "Routes "
-    , "main": "index.js"
-    , "dependencies": {
-        "bcrypt": "^0.8.5"
-        , "body-parser": "~1.9.2"
-        , "express": "~4.9.8"
-        , "jwt-simple": "^0.3.1"
-        , "mongoose": "~4.2.4"
-        , "morgan": "~1.5.0"
-        , "passport": "^0.3.0"
-        , "passport-jwt": "^1.2.1"
-        , "twilio-video": "^1.0.0"
-        , "dotenv": "^4.0.0"
-        , "prismjs": "^1.6.0"
-        , "twilio": "^3.0.0-rc.16"
-        , "twilio-video": "^1.0.0"
-        , "@google-cloud/storage": "1.1.0"
-        , "@google-cloud/vision": "0.11.2"
-     }
-    , "devDependencies": {}
-    , "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-        , "clean": "npm run clean:quickstart && npm run clean:examples"
-        , "clean:quickstart": "rimraf quickstart/public/index.js"
-        , "clean:examples": "npm run clean:examples:mediadevices"
-        , "clean:examples:mediadevices": "rimraf examples/mediadevices/public/index.js examples/mediadevices/public/helpers.js"
-        , "build": "npm run build:quickstart && npm run build:examples"
-        , "build:examples": "npm run build:example:mediadevices"
-        , "build:example:mediadevices": "copyfiles -f examples/mediadevices/src/helpers.js examples/mediadevices/public && browserify examples/mediadevices/src/index.js > examples/mediadevices/public/index.js"
-        , "build:quickstart": "browserify quickstart/src/index.js > quickstart/public/index.js"
-        , "start": "npm run clean && npm run build && node server"
-    }
-    , "author": "Franny Rodriguez,Kevin Reinoso"
-    , "license": "ISC"
+  "name": "hackathon",
+  "version": "1.0.0",
+  "description": "Routes ",
+  "main": "index.js",
+  "dependencies": {
+    "@google-cloud/storage": "1.1.0",
+    "@google-cloud/vision": "^0.11.2",
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.9.2",
+    "dotenv": "^4.0.0",
+    "express": "~4.9.8",
+    "jwt-simple": "^0.3.1",
+    "mongoose": "~4.2.4",
+    "morgan": "~1.5.0",
+    "passport": "^0.3.0",
+    "passport-jwt": "^1.2.1",
+    "prismjs": "^1.6.0",
+    "twilio": "^3.0.0-rc.16",
+    "twilio-video": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Franny Rodriguez,Kevin Reinoso",
+  "license": "ISC"
 }
