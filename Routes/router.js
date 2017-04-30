@@ -2,7 +2,7 @@ var express= require('express');
 var router = express.Router();
 var passport = require('passport');
 var jwt= require('jwt-simple');
-var user= require('../app/models/user');
+var Psych= require('../app/models/user');
 var patient=require('../app/models/patient');
 
 require('../config/passport')(passport);
@@ -17,7 +17,7 @@ router.post('/signup', function (req, res) {
         });
     }
     else {
-        var newUser = new User({
+        var newUser = new Psych({
             email: req.body.email
             , password: req.body.password
             , name: req.body.name

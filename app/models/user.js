@@ -47,4 +47,4 @@ psychSchema.methods.comparePassword = function (passw, cb) {
         cb(null, isMatch);
     });
 };
-module.exports = mongoose.model('User', psychSchema);
+module.exports = mongoose.model('Psych', psychSchema);
