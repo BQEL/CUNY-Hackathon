@@ -2,8 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 //userModel  schema
-var psychSchema = new Schema({
-    email: {
+var patientSchema = new Schema({
+    patientid: {
+        type: String
+        , unique: true
+        , required: true
+    }
+    , username: {
         type: String
         , unique: true
         , required: true
@@ -18,8 +23,12 @@ var psychSchema = new Schema({
     , lastname: {
         type: String
     }
+    , psych: {
+        type: String
+        , required: true
+    }
 });
-psychSchema.pre('save', function (next) {
+patientSchema.pre('save', function (next) {
     var user = this;
     if (this.isModified('password') || this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
@@ -39,7 +48,7 @@ psychSchema.pre('save', function (next) {
         return next();
     }
 });
-psychSchema.methods.comparePassword = function (passw, cb) {
+patientSchema.methods.comparePassword = function (passw, cb) {
     bcrypt.compare(passw, this.password, function (err, isMatch) {
         if (err) {
             return cb(err);
@@ -47,4 +56,4 @@ psychSchema.methods.comparePassword = function (passw, cb) {
         cb(null, isMatch);
     });
 };
-module.exports = mongoose.model('User', psychSchema);
+module.exports = mongoose.model('Patient', patientSchema);
