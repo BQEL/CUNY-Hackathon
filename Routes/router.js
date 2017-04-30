@@ -4,15 +4,17 @@ var passport = require('passport');
 var jwt= require('jwt-simple');
 var Psych= require('../app/models/user');
 var patient=require('../app/models/patient');
+var AccessToken=require('twilio').jwt.AccessToken;
+var VideoGrant=AccesToken.VideoGrant;
 
 require('../config/passport')(passport);
 
 
-//singup user
+//singup Psych
 router.post('/signup', function (req, res) {
     if (!req.body.name || !req.body.password) {
         res.json({
-            success: false
+             success: false
             , msg: 'Please pass user fields'
         });
     }
@@ -39,8 +41,7 @@ router.post('/signup', function (req, res) {
     }
 });
 
-//authentication
-
+//authentication Psych
 
 router.post('/authenticate', function (req, res) {
     User.findOne({
@@ -110,6 +111,10 @@ router.get('/personalInfo', passport.authenticate('jwt', {
     }
 });
 
+
+
+
+//get token
 getToken = function (headers) {
     if (headers && headers.authorization) {
         var parted = headers.authorization.split(' ');
