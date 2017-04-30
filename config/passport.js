@@ -1,7 +1,7 @@
 var jwt = require('passport-jwt').Strategy;
 
 //user model
-var user = require('../app/models/user');
+var user = require('../app/models/userlogin');
 var config = require('../config/database');
 
 module.exports = function(passport) {
