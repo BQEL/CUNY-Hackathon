@@ -1,3 +1,4 @@
+var path = require('path');
 var express= require('express');
 var router = express.Router();
 var passport = require('passport');
@@ -6,9 +7,13 @@ var Psych= require('../app/models/user');
 var patient=require('../app/models/patient');
 var AccessToken=require('twilio').jwt.AccessToken;
 var VideoGrant=AccesToken.VideoGrant;
-
+require('dotenv').load();
 require('../config/passport')(passport);
-
+var randomName = require('./randomname');
+var mediadevicesPath = path.join(__dirname, '../examples/mediadevices/public');
+var quickstartPath = path.join(__dirname, '../quickstart/public');
+app.use('/quickstart', express.static(quickstartPath));
+app.use('/mediadevices', express.static(mediadevicesPath));
 
 //singup Psych
 router.post('/signup', function (req, res) {
@@ -112,7 +117,25 @@ router.get('/personalInfo', passport.authenticate('jwt', {
 });
 
 
+// Tim's code - these are our Twilio tokens 
+app.get('/token', function(request, response) {
+var identity = randomName();
+var token = new AccessToken(
+    process.env.TWILIO_ACCOUNT_SID,
+    process.env.TWILIO_API_KEY,
+    process.env.TWILIO_API_SECRET
+  );
 
+token.identity = identity;
+
+var grant = new VideoGrant();
+token.addGrant(grant);
+
+response.send({
+    identity: identity,
+    token: token.toJwt()
+  });
+});
 
 //get token
 getToken = function (headers) {
