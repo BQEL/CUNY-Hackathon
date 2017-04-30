@@ -1,0 +1,32 @@
+
+
+<div class='container'>
+<div class='container'>
+<ul class="nav nav-pills">
+  <li role="presentation" class="active"><a href="#">Home</a></li>
+  <li role="presentation"><a routerLink="/my-component" class="dropbtn" onclick="myFunction()">Sing In</a></li>
+  <li role="presentation"><a routerLink="/sing">Sing UP</a></li>
+</ul>
+
+<h1>
+  {{title}}
+</h1>
+<!--<app-my-component></app-my-component>
+<app-sing></app-sing>-->
+<router-outlet></router-outlet>
+<div id='icon'>
+</div>
+<h2>
+  {{subtitle}}
+</h2>
+  <p>
+    {{ multipleV.name }}
+    --------------------------
+    {{ multipleV.age }}
+    --------------------------
+    {{ multipleV.id }}
+  </p>
+  <div class = 'subcontainer'>
+    {{arrayObj[0].name }}
+  </div>
+</div>

@@ -1,0 +1,13 @@
+h1,h2{
+    text-align: center;
+    color:red;
+}
+.container{
+    background-image:-webkit-linear-gradient(gray,white);
+    height: 1170px;
+}
+#icon{
+    width: 40px;
+    height: 40px;
+}
+
